@@ -1,0 +1,23 @@
+[Unit]
+Description=WireGuard Peer Connection Monitor
+Documentation=https://github.com/WireGuard/wireguard-tools
+After=network.target docker.service
+Wants=docker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/wg-peer-monitor.sh
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=wg-peer-monitor
+
+# Variáveis de ambiente (ajuste conforme necessário)
+Environment=WG_INTERFACE=wg0
+Environment=WG_DOCKER_CONTAINER=wgdashboard
+Environment=WG_INACTIVE_THRESHOLD=180
+Environment=WG_CHECK_INTERVAL=5
+
+[Install]
+WantedBy=multi-user.target

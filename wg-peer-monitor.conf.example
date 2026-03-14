@@ -1,0 +1,24 @@
+# =============================================================================
+# wg-peer-monitor.conf — Arquivo de exemplo
+# Renomeie para wg-peer-monitor.conf e preencha seus dados
+# =============================================================================
+
+# Nome da interface WireGuard a ser monitorada
+WG_INTERFACE="wg0"
+
+# Nome do contêiner Docker (deixe vazio "" se o WireGuard rodar direto no host)
+WG_DOCKER_CONTAINER="wgdashboard"
+
+# Tempo (segundos) sem handshake para considerar peer desconectado
+WG_INACTIVE_THRESHOLD=180
+
+# Intervalo entre verificações (em segundos)
+WG_CHECK_INTERVAL=5
+
+# Tag usada nos logs do sistema
+LOG_TAG="wg-peer-monitor"
+
+# --- Configurações de Notificação (CallMeBot WhatsApp) ---
+# Obtenha sua API Key em: https://www.callmebot.com/blog/free-api-whatsapp-messages/
+WG_ON_CONNECT_URL="https://api.callmebot.com/whatsapp.php?phone=SEU_TELEFONE&text={TEXT}&apikey=SUA_API_KEY"
+WG_ON_DISCONNECT_URL="https://api.callmebot.com/whatsapp.php?phone=SEU_TELEFONE&text={TEXT}&apikey=SUA_API_KEY"

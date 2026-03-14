@@ -1,0 +1,11 @@
+# Arquivos de estado e testes
+test_state/
+test-monitor.sh
+
+# Configurações sensíveis (Contém API Keys e Telefones)
+wg-peer-monitor.conf
+
+# Logs e arquivos temporários
+*.log
+*.zip
+.DS_Store
