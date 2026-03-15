@@ -64,7 +64,8 @@ on_peer_connect() {
     local peer="$1"
     local endpoint="$2"
     local peer7=$(echo "$peer" | cut -c1-7)
-    local msg="WG_CONECTADO_${endpoint}_${peer7}"
+    local ts=$(date "+%m:%d@%H:%M")
+    local msg="${ts} >>> WG_CONECTADO_${endpoint}_${peer7}"
     
     log "CONECTADO: peer=$peer endpoint=$endpoint"
     send_notification "$WG_ON_CONNECT_URL" "$msg"
@@ -74,7 +75,8 @@ on_peer_disconnect() {
     local peer="$1"
     local endpoint="$2" # Agora recebe o último endpoint conhecido
     local peer7=$(echo "$peer" | cut -c1-7)
-    local msg="WG_DESCONECTADO_${endpoint}_${peer7}"
+    local ts=$(date "+%m:%d@%H:%M")
+    local msg="${ts} >>> WG_DESCONECTADO_${endpoint}_${peer7}"
     
     log "DESCONECTADO: peer=$peer"
     send_notification "$WG_ON_DISCONNECT_URL" "$msg"
